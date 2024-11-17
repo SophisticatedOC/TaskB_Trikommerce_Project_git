@@ -19,5 +19,17 @@ available_items:(integer) This function returns this integer which updates the a
 The function will also update the inventory_records (For restocking) for a  given current day. 
 
     '''
+    # Only allows sales day every day except restock days (every 7th day)
+    if current_day % 7 == 0:
+        return available_items
     
+    # Simulate daily sales
+    items_sold = random.randint(0, 200)  # Random sales between 0 or less than 200
+    available_items -= items_sold
+
+
+    # Update inventory records
+    inventory_records.append((current_day, items_sold, 0, available_items))
+
+    # Return updated available items
     return available_items

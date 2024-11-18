@@ -27,7 +27,6 @@ The function will also update the inventory_records (For restocking) for a  give
     items_sold = random.randint(0, 200)  # Random sales between 0 or less than 200
     available_items -= items_sold
 
-
     # Update inventory records
     inventory_records.append((current_day, items_sold, 0, available_items))
 

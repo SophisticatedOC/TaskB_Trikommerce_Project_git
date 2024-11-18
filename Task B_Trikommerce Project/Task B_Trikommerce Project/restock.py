@@ -20,13 +20,12 @@ The function will also update the inventory_records (For restocking) for a  give
     # Only allows restocking on every 7th day
     if not current_day % 7 == 0:
         return available_items
-
-    # Restock if available items less than 1400
-    if available_items < 1400:
-        restocked_items = 1500  # Restock 2000 items if needed
-        available_items += restocked_items
-
-    # Update inventory records for the day
-    inventory_records.append((current_day, 0, restocked_items, available_items))
+    restocked_items = 0
     
-    return available_items
+    # Restock if available items less than 2000
+    if available_items < 2000:
+        restocked_items = 2000 - available_items
+    # Update inventory records for the day
+    inventory_records.append((current_day, 0, restocked_items, 2000))
+    
+    return 2000
